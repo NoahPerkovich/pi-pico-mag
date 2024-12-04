@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "mcp6002")(type "KiCad")(uri "C:/Users/noahp/kiCad/mcp_6002footprint/footprints.pretty")(options "")(descr ""))
+)
