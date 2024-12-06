@@ -2,8 +2,8 @@ from machine import Pin, SPI, UART
 import time
 import helpers
 
-sampling_rate = 1000  # Hz
-file_size = 1000 # num samples
+sampling_rate = 15000  # Hz
+file_size = 30000 # num samples
 project = 'nogps'
 
 time.sleep(0.5)
@@ -14,6 +14,7 @@ drdy = Pin(20, Pin.IN)
 MISO_PIN = 16     # Data Out (DOUT / MISO)
 MOSI_PIN = 19     # Data In (DIN / MOSI)
 SCLK_PIN = 18     # Serial Clock (SCLK)
+
 ads_spi = SPI(0, baudrate=1000000, polarity=0, phase=1, sck=Pin(SCLK_PIN), mosi=Pin(MOSI_PIN), miso=Pin(MISO_PIN))
 ads_initialized = helpers.initialize_ads1256(ads_spi, ads_cs, drdy, sampling_rate)
 time.sleep(0.5)

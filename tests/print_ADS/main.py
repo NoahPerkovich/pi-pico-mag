@@ -40,5 +40,4 @@ if ads_initialized:
         print("Program terminated by computer control.")
         
     finally:
-        helpers.close_sd()
         print('end')

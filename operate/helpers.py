@@ -229,174 +229,204 @@ def initialize_ads1256(spi, cs, drdy, sps):
         print("Error during ADS1256 initialization:", e)
         return False
 
-def read_and_print_1(drdy, spi, cs, stop):  # For reading 1 component to serial
-
-    send_command(spi, cs, RDATAC)
-    # Start sampling
-    while stop.value() ==0:
-        try:
-            # Wait for DRDY to signal data is ready
-            while drdy.value() == 1:
-                pass
-
-            # Read 3 bytes of data from the ADC
-            sample_time = get_time()
-            raw_data = spi.read(3)
-
-            # Combine the 3 bytes into a single 24-bit signed value
-            result = (raw_data[0] << 16) | (raw_data[1] << 8) | raw_data[2]
-            if result & 0x800000:  # Check for negative sign in 24-bit data
-                result -= 0x1000000
-
-            print(result, sample_time)
-
-        except Exception as e:
-            print(f"Error sampling data: {e}")
-            continue
+def read_and_print_1(drdy, spi, cs, stop):  # For reading 2 component to serial using RDATA in SDATAC mode
+    # Ensure we are not in continuous read mode
     send_command(spi, cs, SDATAC)
+    # Set MUX to channel pair AIN0-AIN1
+    send_command(spi, cs, CONFIG_DIF1)   # Set channel
 
-def read_and_print_2(drdy, spi, cs, stop):  # For reading 2 component to serial
+    # Issue RDATA command and discard the first sample (stale)
+    cs.value(0)
+    spi.write(bytearray([RDATA]))
+    raw_data = spi.read(3)
+    cs.value(1)
 
-    send_command(spi, cs, RDATAC)
-    # Start sampling
-    while stop.value() ==0:
+    while stop.value() == 0:
         try:
-            send_command(spi, cs, RDATAC)
-            send_command(spi, cs, CONFIG_DIF1)  # Initialize to read diff 1
-            send_command(spi, cs, RDATAC)
-            # Wait for DRDY to signal data is ready
+            # Wait for DRDY to indicate data ready
             while drdy.value() == 1:
                 pass
-            # Read 3 bytes of data from the ADC
-            raw_data = spi.read(3)
-            # Combine the 3 bytes into a single 24-bit signed value
-            result_x = (raw_data[0] << 16) | (raw_data[1] << 8) | raw_data[2]
-            if result_x & 0x800000:  # Check for negative sign in 24-bit data
-                result_x -= 0x1000000
             sample_time_x = get_time()
-            
-            send_command(spi, cs, RDATAC)
-            send_command(spi, cs, CONFIG_DIF1)  # Initialize to read from 4th pair of inputs
-            send_command(spi, cs, RDATAC)
-            # Wait for DRDY to signal data is ready
-            while drdy.value() == 1:
-                pass
-            # Read 3 bytes of data from the ADC
+            cs.value(0)
+            spi.write(bytearray([RDATA]))
             raw_data = spi.read(3)
-            # Combine the 3 bytes into a single 24-bit signed value
-            result_y = (raw_data[0] << 16) | (raw_data[1] << 8) | raw_data[2]
-            if result_y & 0x800000:  # Check for negative sign in 24-bit data
-                result_y -= 0x1000000
-            sample_time_y = get_time()
+            cs.value(1)
 
-            print(result_x, sample_time_x, result_y, sample_time_y)
+            result_x = (raw_data[0] << 16) | (raw_data[1] << 8) | raw_data[2]
+            if result_x & 0x800000:
+                result_x -= 0x1000000
+
+            # Print the results
+            print(f"{result_x},{sample_time_x}")
 
         except Exception as e:
             print(f"Error sampling data: {e}")
             continue
+
+    # Cleanup: ensure SDATAC mode at the end
     send_command(spi, cs, SDATAC)
 
-def sample_data_1(file_size, pps, drdy, spi, cs, file_name): # read one component mag field (fast)
-    send_command(spi, cs, RDATAC)
-    # Wait for DRDY to signal data is ready
-    while drdy.value() == 1:
-        pass
-    # Read and discard the first sample
-    _ = spi.read(3)
+def read_and_print_2(drdy, spi, cs, stop):  # For reading 2 component to serial using RDATA in SDATAC mode
+    # Ensure we are not in continuous read mode
+    send_command(spi, cs, SDATAC)
+
+    while stop.value() == 0:
+        try:
+            # ---- READ FROM CHANNEL 1 (CONFIG_DIF1) ----
+            # Set MUX to channel pair AIN0-AIN1
+            send_command(spi, cs, SDATAC)        # Ensure not in RDATAC
+            send_command(spi, cs, CONFIG_DIF4)   # Set channel
+            # Wait for DRDY to indicate data ready
+            while drdy.value() == 1:
+                pass
+            # Issue RDATA command and discard the first sample (stale)
+            cs.value(0)
+            spi.write(bytearray([RDATA]))
+            raw_data = spi.read(3)
+            cs.value(1)
+
+            # Wait for next DRDY for a stable sample
+            while drdy.value() == 1:
+                pass
+            sample_time_x = get_time()
+            cs.value(0)
+            spi.write(bytearray([RDATA]))
+            raw_data = spi.read(3)
+            cs.value(1)
+
+            result_x = (raw_data[0] << 16) | (raw_data[1] << 8) | raw_data[2]
+            if result_x & 0x800000:
+                result_x -= 0x1000000
+
+            # ---- READ FROM CHANNEL 2 (CONFIG_DIF4) ----
+            send_command(spi, cs, SDATAC)
+            send_command(spi, cs, CONFIG_DIF4)  # Set to channel AIN6-AIN7
+            # Wait for DRDY
+            while drdy.value() == 1:
+                pass
+            # Discard first sample
+            cs.value(0)
+            spi.write(bytearray([RDATA]))
+            raw_data = spi.read(3)
+            cs.value(1)
+
+            # Wait for next DRDY
+            while drdy.value() == 1:
+                pass
+            sample_time_y = get_time()
+            cs.value(0)
+            spi.write(bytearray([RDATA]))
+            raw_data = spi.read(3)
+            cs.value(1)
+
+            result_y = (raw_data[0] << 16) | (raw_data[1] << 8) | raw_data[2]
+            if result_y & 0x800000:
+                result_y -= 0x1000000
+
+            # Print the results
+            print(f"{result_x},{sample_time_x},{result_y},{sample_time_y}")
+
+        except Exception as e:
+            print(f"Error sampling data: {e}")
+            continue
+
+    # Cleanup: ensure SDATAC mode at the end
+    send_command(spi, cs, SDATAC)
+
+
+def sample_data_1(file_size, pps, drdy, spi, cs, file_name):  # Single component (fast, explicit RDATA)
+    send_command(spi, cs, SDATAC)  # Ensure not in RDATAC mode
+    send_command(spi, cs, CONFIG_DIF4)  # Initialize channel AIN0-AIN1
 
     full_path = '/sd/' + file_name
 
     with open(full_path, 'ab') as file:  # Append binary mode
-        # Start sampling
         for _ in range(file_size):
             try:
                 # Wait for DRDY to signal data is ready
                 while drdy.value() == 1:
                     pass
 
-                # Read 3 bytes of data from the ADC
+                # Send RDATA command and read 3 bytes
+                cs.value(0)
+                spi.write(bytearray([RDATA]))
                 raw_data = spi.read(3)
+                cs.value(1)
 
-                # Get the timestamp and ensure it's within 31 bits
+                # Convert raw 24-bit data to signed integer
+                result = (raw_data[0] << 16) | (raw_data[1] << 8) | raw_data[2]
+                if result & 0x800000:  # Handle negative values
+                    result -= 0x1000000
+
+                # Get timestamp and add PPS flag
                 sample_time = int(get_time() & 0x7FFFFFFF)
-
-                # Check PPS signal
                 pps_flag = 1 if pps.value() else 0
-
-                # Combine pps_flag and sample_time
-                combined_time = (pps_flag << 31) | sample_time  # Set MSB as pps_flag
+                combined_time = (pps_flag << 31) | sample_time  # Set MSB as PPS flag
 
                 # Pack data: [raw_data (3 bytes), combined_time (4 bytes)]
                 packed_data = struct.pack('<3sI', raw_data, combined_time)
-                # write data
                 file.write(packed_data)
 
             except Exception as e:
                 print(f"Error sampling data: {e}")
                 continue
 
-    while drdy.value() == 1:
-        pass
-    # Read and discard the last sample
-    _ = spi.read(3)
-    send_command(spi, cs, SDATAC)
+    send_command(spi, cs, SDATAC)  # Ensure cleanup to SDATAC mode
 
-def sample_data_2(file_size, pps, drdy, spi, cs, file_name): # read 2 component (less fast)
-    send_command(spi, cs, RDATAC)
-    # Wait for DRDY to signal data is ready
-    while drdy.value() == 1:
-        pass
-    # Read and discard the first sample
-    _ = spi.read(3)
+
+def sample_data_2(file_size, pps, drdy, spi, cs, file_name):  # Two components (explicit RDATA)
+    send_command(spi, cs, SDATAC)  # Ensure not in RDATAC mode
 
     full_path = '/sd/' + file_name
 
     with open(full_path, 'ab') as file:  # Append binary mode
-        # Start sampling
         for _ in range(file_size):
             try:
-                send_command(spi, cs, RDATAC)
-                send_command(spi, cs, CONFIG_DIF1)  # Initialize to read diff 1
-                send_command(spi, cs, RDATAC)
-                # Wait for DRDY to signal data is ready
-                while drdy.value() == 1:
+                # ---- READ CHANNEL 1 (CONFIG_DIF1) ----
+                send_command(spi, cs, CONFIG_DIF1)  # Set channel AIN0-AIN1
+                while drdy.value() == 1:  # Wait for DRDY signal
                     pass
-                # Read 3 bytes of data from the ADC
+
+                cs.value(0)
+                spi.write(bytearray([RDATA]))
                 raw_data_x = spi.read(3)
-                # Get the timestamp and ensure it's within 31 bits
+                cs.value(1)
+
+                result_x = (raw_data_x[0] << 16) | (raw_data_x[1] << 8) | raw_data_x[2]
+                if result_x & 0x800000:  # Handle negative values
+                    result_x -= 0x1000000
+
                 sample_time_x = int(get_time() & 0x7FFFFFFF)
-
-                # Check PPS signal
                 pps_flag = 1 if pps.value() else 0
+                combined_time_x = (pps_flag << 31) | sample_time_x
 
-                # Combine pps_flag and sample_time
-                combined_time = (pps_flag << 31) | sample_time_x  # Set MSB as pps_flag
-                
-                send_command(spi, cs, RDATAC)
-                send_command(spi, cs, CONFIG_DIF1)  # Initialize to read from 4th pair of inputs
-                send_command(spi, cs, RDATAC)
-                # Wait for DRDY to signal data is ready
-                while drdy.value() == 1:
+                # ---- READ CHANNEL 2 (CONFIG_DIF4) ----
+                send_command(spi, cs, CONFIG_DIF4)  # Set channel AIN6-AIN7
+                while drdy.value() == 1:  # Wait for DRDY signal
                     pass
-                # Read 3 bytes of data from the ADC
-                raw_data_y = spi.read(3)
-                # Get the timestamp and ensure it's within 31 bits
-                sample_time_y = int(get_time() & 0x7FFFFFFF)
 
-                # Pack data: [raw_data (3 bytes), combined_time (4 bytes)]
-                packed_data = struct.pack('<3sI3sI', raw_data_x, combined_time, raw_data_y, sample_time_y)
-                # write data
+                cs.value(0)
+                spi.write(bytearray([RDATA]))
+                raw_data_y = spi.read(3)
+                cs.value(1)
+
+                result_y = (raw_data_y[0] << 16) | (raw_data_y[1] << 8) | raw_data_y[2]
+                if result_y & 0x800000:  # Handle negative values
+                    result_y -= 0x1000000
+
+                sample_time_y = int(get_time() & 0x7FFFFFFF)
+                combined_time_y = (pps_flag << 31) | sample_time_y
+
+                # Pack data: [raw_data_x (3 bytes), combined_time_x (4 bytes), raw_data_y (3 bytes), combined_time_y (4 bytes)]
+                packed_data = struct.pack('<3sI3sI', raw_data_x, combined_time_x, raw_data_y, combined_time_y)
                 file.write(packed_data)
 
             except Exception as e:
                 print(f"Error sampling data: {e}")
                 continue
 
-    while drdy.value() == 1:
-        pass
-    # Read and discard the last sample
-    _ = spi.read(3)
-    send_command(spi, cs, SDATAC)
+    send_command(spi, cs, SDATAC)  # Ensure cleanup to SDATAC mode
+
 
     #### OTHER ####
 
