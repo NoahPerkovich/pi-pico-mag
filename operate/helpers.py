@@ -52,7 +52,6 @@ def parse_coordinate(coord, direction):
         decimal = -decimal
     return decimal
 
-
 ##### SD #####
 #functions and helpers to interact with adafruit sd
 
@@ -82,13 +81,28 @@ def close_sd():
 
 def create_new_file(file_name):
     try:
-        full_path = '/sd/' + file_name
-        # Open the file in write mode to create or truncate it
+        base_path = '/sd/'
+        prefix = 0
+        
+        # Find the first available filename with a prefix
+        while True:
+            full_path = base_path + f"{prefix}_{file_name}"
+            try:
+                uos.stat(full_path)  # Check if the file exists
+                prefix += 1  # Increment prefix if file exists
+            except OSError:
+                break  # File does not exist, so it's available
+        
+        # Create or truncate the file
         with open(full_path, 'w') as file:
-            pass  # We just want to create the file or truncate if it exists
+            pass  # Create the file or truncate it if it exists
+        
         print(f"New file created: {full_path}")
+        return f"{prefix}_{file_name}"
+    
     except Exception as e:
         print(f"Error creating new file: {e}")
+        return None
 
 def write(data_block, file_name):
     try:
@@ -234,7 +248,7 @@ def sample_data( drdy, spi, cs, stop):  # For reading 1 component to serial
             if result & 0x800000:  # Check for negative sign in 24-bit data
                 result -= 0x1000000
 
-            print(result*5 /2**23, sample_time)
+            print(result, sample_time)
 
         except Exception as e:
             print(f"Error sampling data: {e}")
@@ -318,7 +332,7 @@ def sample_data_2(file_size, pps, drdy, spi, cs, file_name): # read 2 component 
                 combined_time = (pps_flag << 31) | sample_time_x  # Set MSB as pps_flag
                 
                 send_command(spi, cs, RDATAC)
-                send_command(spi, cs, CONFIG_DIF2)  # Initialize to read diff 1
+                send_command(spi, cs, CONFIG_DIF1)  # Initialize to read from 4th pair of inputs
                 send_command(spi, cs, RDATAC)
                 # Wait for DRDY to signal data is ready
                 while drdy.value() == 1:
@@ -342,3 +356,55 @@ def sample_data_2(file_size, pps, drdy, spi, cs, file_name): # read 2 component 
     # Read and discard the last sample
     _ = spi.read(3)
     send_command(spi, cs, SDATAC)
+
+    #### OTHER ####
+
+def write_metadata(gps_initialized, file_name):
+    try:
+        full_path = '/sd/' + file_name
+
+        # Default metadata values
+        latitude = "N/A"
+        longitude = "N/A"
+        timestamp = "N/A"
+
+        if gps_initialized:
+            # Attempt to fetch GPS data
+            uart = UART(1, baudrate=9600, tx=17, rx=16, timeout=500)  # Adjust UART pins and settings as needed
+            uart.init(baudrate=9600, tx=17, rx=16, timeout=500)
+            start_time = time.ticks_ms()
+            while time.ticks_diff(time.ticks_ms(), start_time) < 1000:  # Allow up to 1 second to get valid GPS data
+                if uart.any():
+                    line = uart.readline().decode('utf-8')
+                    if line.startswith('$GNRMC') or line.startswith('$GPRMC'):
+                        data = line.split(',')
+                        if data[2] == 'A':  # Valid GPS data
+                            latitude = parse_coordinate(data[3], data[4])
+                            longitude = parse_coordinate(data[5], data[6])
+                            timestamp = data[1]
+                            break
+
+        # Write metadata to the file
+        with open(full_path, 'a') as file:
+            file.write(f"GPS Latitude: {latitude}\n")
+            file.write(f"GPS Longitude: {longitude}\n")
+            file.write(f"GPS Timestamp (UTC): {timestamp}\n")
+            file.write(f"Pico Time (us): {get_time()}\n")
+            file.write(f"Data:\n")
+
+    except Exception as e:
+        print(f"Error writing metadata: {e}")
+
+##### XBEE ######
+# Send data to XBee
+def send_xbee_data(data, xbee_uart):
+    xbee_uart.write(data)
+    print(f"Sent to XBee: {data}")
+
+# Receive data from XBee
+def receive_xbee_data(xbee_uart):
+    if xbee_uart.any():
+        data = xbee_uart.read()  # Read data from UART
+        print(f"Received from XBee: {data}")
+        return data
+    return None

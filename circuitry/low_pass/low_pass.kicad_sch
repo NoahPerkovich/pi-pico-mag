@@ -836,7 +836,7 @@
 		)
 	)
 	(junction
-		(at 162.56 52.07)
+		(at 104.14 142.24)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "07069dd9-0cd2-4a96-a961-6e0b82e426f8")
@@ -848,13 +848,13 @@
 		(uuid "229da2a6-7ec2-489f-a3ba-6d5950824ac8")
 	)
 	(junction
-		(at 176.53 52.07)
+		(at 118.11 142.24)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "466e1c09-c003-475d-b31f-d86f0d131e84")
 	)
 	(junction
-		(at 207.01 54.61)
+		(at 148.59 144.78)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "50233cb7-c915-488e-9709-552e2ac824a3")
@@ -885,7 +885,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 73.66) (xy 189.23 62.23)
+			(xy 130.81 163.83) (xy 130.81 152.4)
 		)
 		(stroke
 			(width 0)
@@ -895,7 +895,7 @@
 	)
 	(wire
 		(pts
-			(xy 180.34 57.15) (xy 180.34 68.58)
+			(xy 121.92 147.32) (xy 121.92 158.75)
 		)
 		(stroke
 			(width 0)
@@ -955,7 +955,7 @@
 	)
 	(wire
 		(pts
-			(xy 176.53 59.69) (xy 176.53 52.07)
+			(xy 118.11 149.86) (xy 118.11 142.24)
 		)
 		(stroke
 			(width 0)
@@ -975,7 +975,7 @@
 	)
 	(wire
 		(pts
-			(xy 180.34 68.58) (xy 207.01 68.58)
+			(xy 121.92 158.75) (xy 148.59 158.75)
 		)
 		(stroke
 			(width 0)
@@ -1015,7 +1015,7 @@
 	)
 	(wire
 		(pts
-			(xy 158.75 52.07) (xy 162.56 52.07)
+			(xy 100.33 142.24) (xy 104.14 142.24)
 		)
 		(stroke
 			(width 0)
@@ -1035,7 +1035,7 @@
 	)
 	(wire
 		(pts
-			(xy 199.39 54.61) (xy 207.01 54.61)
+			(xy 140.97 144.78) (xy 148.59 144.78)
 		)
 		(stroke
 			(width 0)
@@ -1045,7 +1045,7 @@
 	)
 	(wire
 		(pts
-			(xy 172.72 52.07) (xy 176.53 52.07)
+			(xy 114.3 142.24) (xy 118.11 142.24)
 		)
 		(stroke
 			(width 0)
@@ -1055,7 +1055,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 31.75) (xy 189.23 46.99)
+			(xy 130.81 121.92) (xy 130.81 137.16)
 		)
 		(stroke
 			(width 0)
@@ -1085,7 +1085,7 @@
 	)
 	(wire
 		(pts
-			(xy 180.34 57.15) (xy 184.15 57.15)
+			(xy 121.92 147.32) (xy 125.73 147.32)
 		)
 		(stroke
 			(width 0)
@@ -1115,7 +1115,7 @@
 	)
 	(wire
 		(pts
-			(xy 180.34 40.64) (xy 207.01 40.64)
+			(xy 121.92 130.81) (xy 148.59 130.81)
 		)
 		(stroke
 			(width 0)
@@ -1125,7 +1125,7 @@
 	)
 	(wire
 		(pts
-			(xy 207.01 54.61) (xy 207.01 68.58)
+			(xy 148.59 144.78) (xy 148.59 158.75)
 		)
 		(stroke
 			(width 0)
@@ -1155,7 +1155,7 @@
 	)
 	(wire
 		(pts
-			(xy 207.01 54.61) (xy 218.44 54.61)
+			(xy 148.59 144.78) (xy 160.02 144.78)
 		)
 		(stroke
 			(width 0)
@@ -1165,7 +1165,7 @@
 	)
 	(wire
 		(pts
-			(xy 176.53 73.66) (xy 176.53 67.31)
+			(xy 118.11 163.83) (xy 118.11 157.48)
 		)
 		(stroke
 			(width 0)
@@ -1205,7 +1205,7 @@
 	)
 	(wire
 		(pts
-			(xy 176.53 52.07) (xy 184.15 52.07)
+			(xy 118.11 142.24) (xy 125.73 142.24)
 		)
 		(stroke
 			(width 0)
@@ -1215,7 +1215,7 @@
 	)
 	(wire
 		(pts
-			(xy 207.01 40.64) (xy 207.01 54.61)
+			(xy 148.59 130.81) (xy 148.59 144.78)
 		)
 		(stroke
 			(width 0)
@@ -1225,7 +1225,7 @@
 	)
 	(wire
 		(pts
-			(xy 162.56 52.07) (xy 165.1 52.07)
+			(xy 104.14 142.24) (xy 106.68 142.24)
 		)
 		(stroke
 			(width 0)
@@ -1255,7 +1255,7 @@
 	)
 	(wire
 		(pts
-			(xy 172.72 40.64) (xy 162.56 40.64)
+			(xy 114.3 130.81) (xy 104.14 130.81)
 		)
 		(stroke
 			(width 0)
@@ -1275,7 +1275,7 @@
 	)
 	(wire
 		(pts
-			(xy 162.56 40.64) (xy 162.56 52.07)
+			(xy 104.14 130.81) (xy 104.14 142.24)
 		)
 		(stroke
 			(width 0)
@@ -1334,7 +1334,7 @@
 		)
 		(uuid "eba4ed04-8c1f-480a-b4a9-4fa26f314869")
 	)
-	(label "lowpass"
+	(label "lowpass gained"
 		(at 114.3 77.47 0)
 		(fields_autoplaced yes)
 		(effects
@@ -1345,8 +1345,8 @@
 		)
 		(uuid "bd619414-e4f2-475c-8922-cde135b28a78")
 	)
-	(label "lowpass_gained"
-		(at 209.55 54.61 0)
+	(label "lowpass"
+		(at 151.13 144.78 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1854,7 +1854,7 @@
 	)
 	(symbol
 		(lib_id "sallen_key_schlib:C")
-		(at 176.53 63.5 0)
+		(at 118.11 153.67 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -1863,7 +1863,7 @@
 		(dnp no)
 		(uuid "26220916-0c9c-4489-81de-e429a19a505c")
 		(property "Reference" "C4"
-			(at 173.609 62.3316 0)
+			(at 115.189 152.5016 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1872,7 +1872,7 @@
 			)
 		)
 		(property "Value" "0.1u"
-			(at 173.609 64.643 0)
+			(at 115.189 154.813 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1881,7 +1881,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 175.5648 67.31 0)
+			(at 117.1448 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1889,7 +1889,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 176.53 63.5 0)
+			(at 118.11 153.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1897,7 +1897,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 176.53 63.5 0)
+			(at 118.11 153.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1906,7 +1906,7 @@
 			)
 		)
 		(property "Fieldname" "Value"
-			(at 176.53 63.5 0)
+			(at 118.11 153.67 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -1915,7 +1915,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=1 2=2"
-			(at 176.53 63.5 0)
+			(at 118.11 153.67 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -1940,7 +1940,7 @@
 	)
 	(symbol
 		(lib_id "Amplifier_Operational:MCP6002-xP")
-		(at 191.77 54.61 0)
+		(at 133.35 144.78 0)
 		(unit 3)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1949,7 +1949,7 @@
 		(fields_autoplaced yes)
 		(uuid "29f7b691-2880-444c-a6a1-c93e0564bdaa")
 		(property "Reference" "U1"
-			(at 190.5 53.3399 0)
+			(at 132.08 143.5099 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1958,7 +1958,7 @@
 			)
 		)
 		(property "Value" "MCP6002-xP"
-			(at 190.5 55.8799 0)
+			(at 132.08 146.0499 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1967,7 +1967,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 191.77 54.61 0)
+			(at 133.35 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1976,7 +1976,7 @@
 			)
 		)
 		(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf"
-			(at 191.77 54.61 0)
+			(at 133.35 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1985,7 +1985,7 @@
 			)
 		)
 		(property "Description" "1MHz, Low-Power Op Amp, DIP-8"
-			(at 191.77 54.61 0)
+			(at 133.35 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1994,7 +1994,7 @@
 			)
 		)
 		(property "Sim.Library" "C:\\Users\\noahp\\kiCad\\MCP6001.lib"
-			(at 191.77 54.61 0)
+			(at 133.35 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2003,7 +2003,7 @@
 			)
 		)
 		(property "Sim.Name" "MCP6001"
-			(at 191.77 54.61 0)
+			(at 133.35 144.78 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -2012,7 +2012,7 @@
 			)
 		)
 		(property "Sim.Device" "SUBCKT"
-			(at 191.77 54.61 0)
+			(at 133.35 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2021,7 +2021,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=5 2=2 3=1 4=4 8=3"
-			(at 191.77 54.61 0)
+			(at 133.35 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2282,7 +2282,7 @@
 	)
 	(symbol
 		(lib_id "sallen_key_schlib:R")
-		(at 168.91 52.07 270)
+		(at 110.49 142.24 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2291,7 +2291,7 @@
 		(fields_autoplaced yes)
 		(uuid "35f84308-bc09-4cf7-b63c-2b7a1b8a76db")
 		(property "Reference" "R6"
-			(at 168.91 45.72 90)
+			(at 110.49 135.89 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2299,7 +2299,7 @@
 			)
 		)
 		(property "Value" "2k"
-			(at 168.91 48.26 90)
+			(at 110.49 138.43 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2307,7 +2307,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 168.91 50.292 90)
+			(at 110.49 140.462 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2315,7 +2315,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 168.91 52.07 0)
+			(at 110.49 142.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2323,7 +2323,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 168.91 52.07 0)
+			(at 110.49 142.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2332,7 +2332,7 @@
 			)
 		)
 		(property "Fieldname" "Value"
-			(at 168.91 52.07 0)
+			(at 110.49 142.24 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -2341,7 +2341,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=1 2=2"
-			(at 168.91 52.07 0)
+			(at 110.49 142.24 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -2489,7 +2489,7 @@
 	)
 	(symbol
 		(lib_id "sallen_key_schlib:GND")
-		(at 176.53 73.66 0)
+		(at 118.11 163.83 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2498,7 +2498,7 @@
 		(dnp no)
 		(uuid "564a4c0b-76f4-45a2-85b2-f62eb1a6ddad")
 		(property "Reference" "#PWR04"
-			(at 176.53 80.01 0)
+			(at 118.11 170.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2507,7 +2507,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 176.403 78.0542 0)
+			(at 117.983 168.2242 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2515,7 +2515,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 176.53 73.66 0)
+			(at 118.11 163.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2523,7 +2523,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 176.53 73.66 0)
+			(at 118.11 163.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2531,7 +2531,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 176.53 73.66 0)
+			(at 118.11 163.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2617,7 +2617,7 @@
 	)
 	(symbol
 		(lib_id "Amplifier_Operational:MCP6002-xP")
-		(at 191.77 54.61 0)
+		(at 133.35 144.78 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2625,7 +2625,7 @@
 		(dnp no)
 		(uuid "7bdd332e-aaf8-453c-af4e-91bdc6f341c6")
 		(property "Reference" "U1"
-			(at 191.77 44.45 0)
+			(at 133.35 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2634,7 +2634,7 @@
 			)
 		)
 		(property "Value" "MCP6002-xP"
-			(at 191.77 46.99 0)
+			(at 133.35 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2643,7 +2643,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 191.77 54.61 0)
+			(at 133.35 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2652,7 +2652,7 @@
 			)
 		)
 		(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf"
-			(at 191.77 54.61 0)
+			(at 133.35 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2661,7 +2661,7 @@
 			)
 		)
 		(property "Description" "1MHz, Low-Power Op Amp, DIP-8"
-			(at 191.77 54.61 0)
+			(at 133.35 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2670,7 +2670,7 @@
 			)
 		)
 		(property "Sim.Library" "C:\\Users\\noahp\\kiCad\\MCP6001.lib"
-			(at 191.77 54.61 0)
+			(at 133.35 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2679,7 +2679,7 @@
 			)
 		)
 		(property "Sim.Name" "MCP6001"
-			(at 191.77 54.61 0)
+			(at 133.35 144.78 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -2688,7 +2688,7 @@
 			)
 		)
 		(property "Sim.Device" "SUBCKT"
-			(at 191.77 54.61 0)
+			(at 133.35 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2697,7 +2697,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=5 2=2 3=1 4=4 8=3"
-			(at 191.77 54.61 0)
+			(at 133.35 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2740,7 +2740,7 @@
 	)
 	(symbol
 		(lib_id "sallen_key_schlib:GND")
-		(at 189.23 73.66 0)
+		(at 130.81 163.83 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2748,7 +2748,7 @@
 		(dnp no)
 		(uuid "8c31eac2-b69b-4c86-9761-66b9cfeb6228")
 		(property "Reference" "#PWR06"
-			(at 189.23 80.01 0)
+			(at 130.81 170.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2757,7 +2757,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 189.357 78.0542 0)
+			(at 130.937 168.2242 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2765,7 +2765,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 189.23 73.66 0)
+			(at 130.81 163.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2773,7 +2773,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 189.23 73.66 0)
+			(at 130.81 163.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2781,7 +2781,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 189.23 73.66 0)
+			(at 130.81 163.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2897,7 +2897,7 @@
 	)
 	(symbol
 		(lib_id "sallen_key_schlib:C")
-		(at 176.53 40.64 270)
+		(at 118.11 130.81 270)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2906,7 +2906,7 @@
 		(dnp no)
 		(uuid "8fd4686c-6cae-46db-9872-90002e1dfcaf")
 		(property "Reference" "C3"
-			(at 177.6984 37.719 0)
+			(at 119.2784 127.889 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2915,7 +2915,7 @@
 			)
 		)
 		(property "Value" "0.1u"
-			(at 175.387 37.719 0)
+			(at 116.967 127.889 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2924,7 +2924,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 172.72 39.6748 0)
+			(at 114.3 129.8448 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2932,7 +2932,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 176.53 40.64 0)
+			(at 118.11 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2940,7 +2940,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 176.53 40.64 0)
+			(at 118.11 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2949,7 +2949,7 @@
 			)
 		)
 		(property "Fieldname" "Value"
-			(at 176.53 40.64 0)
+			(at 118.11 130.81 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -2958,7 +2958,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=1 2=2"
-			(at 176.53 40.64 0)
+			(at 118.11 130.81 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -3047,7 +3047,7 @@
 	(symbol
 		(lib_name "R_1")
 		(lib_id "sallen_key_schlib:R")
-		(at 154.94 52.07 270)
+		(at 96.52 142.24 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3056,7 +3056,7 @@
 		(fields_autoplaced yes)
 		(uuid "bf967f5a-4048-43f6-9515-603b0387f9d3")
 		(property "Reference" "R5"
-			(at 154.94 45.72 90)
+			(at 96.52 135.89 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3064,7 +3064,7 @@
 			)
 		)
 		(property "Value" "2k"
-			(at 154.94 48.26 90)
+			(at 96.52 138.43 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3072,7 +3072,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 154.94 50.292 90)
+			(at 96.52 140.462 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3080,7 +3080,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 154.94 52.07 0)
+			(at 96.52 142.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3088,7 +3088,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 154.94 52.07 0)
+			(at 96.52 142.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3097,7 +3097,7 @@
 			)
 		)
 		(property "Fieldname" "Value"
-			(at 154.94 52.07 0)
+			(at 96.52 142.24 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -3106,7 +3106,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=1 2=2"
-			(at 154.94 52.07 0)
+			(at 96.52 142.24 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -3131,7 +3131,7 @@
 	)
 	(symbol
 		(lib_id "sallen_key_schlib:VSOURCE")
-		(at 189.23 26.67 180)
+		(at 130.81 116.84 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3139,7 +3139,7 @@
 		(dnp no)
 		(uuid "c0fe28b5-5ee6-476b-b788-137fcfbfe6b2")
 		(property "Reference" "V3"
-			(at 186.055 27.2645 0)
+			(at 127.635 117.4345 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3148,7 +3148,7 @@
 			)
 		)
 		(property "Value" "5"
-			(at 186.055 25.5023 0)
+			(at 127.635 115.6723 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3157,7 +3157,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 189.23 26.67 0)
+			(at 130.81 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3165,7 +3165,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 189.23 26.67 0)
+			(at 130.81 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3173,7 +3173,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 189.23 26.67 0)
+			(at 130.81 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3182,7 +3182,7 @@
 			)
 		)
 		(property "Sim.Device" "V"
-			(at 189.23 26.67 0)
+			(at 130.81 116.84 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -3191,7 +3191,7 @@
 			)
 		)
 		(property "Sim.Type" "DC"
-			(at 434.34 73.66 0)
+			(at 375.92 163.83 0)
 			(effects
 				(font
 					(size 0.001 0.001)
@@ -3200,7 +3200,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=+ 2=-"
-			(at 196.85 31.75 0)
+			(at 138.43 121.92 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -3289,7 +3289,7 @@
 	)
 	(symbol
 		(lib_id "sallen_key_schlib:GND")
-		(at 189.23 21.59 0)
+		(at 130.81 111.76 0)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3298,7 +3298,7 @@
 		(dnp no)
 		(uuid "dc944155-a40b-4b4f-9d9f-304bd54063c3")
 		(property "Reference" "#PWR05"
-			(at 189.23 15.24 0)
+			(at 130.81 105.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3307,7 +3307,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 189.357 17.1958 0)
+			(at 130.937 107.3658 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3315,7 +3315,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 189.23 21.59 0)
+			(at 130.81 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3323,7 +3323,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 189.23 21.59 0)
+			(at 130.81 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3331,7 +3331,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 189.23 21.59 0)
+			(at 130.81 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)

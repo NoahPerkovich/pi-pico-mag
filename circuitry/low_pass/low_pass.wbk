@@ -21,57 +21,8 @@
       "showGrid": true,
       "traces": [
         {
-          "color": "rgb(228, 26, 28)",
-          "cursor1": {
-            "position": 3750.0,
-            "x_format": "3~Hz",
-            "y_format": "3~dB"
-          },
-          "cursorD": {
-            "x_format": "3~s",
-            "y_format": "3~V"
-          },
-          "signal": "V(/lowpass) (gain)",
-          "trace_type": 521
-        },
-        {
-          "color": "rgb(77, 175, 74)",
-          "signal": "V(Net-_C1-Pad2_) (phase)",
-          "trace_type": 517
-        },
-        {
-          "color": "rgb(77, 175, 74)",
-          "signal": "V(Net-_C1-Pad2_) (gain)",
-          "trace_type": 521
-        },
-        {
-          "color": "rgb(55, 126, 184)",
-          "signal": "V(Net-_R1-Pad2_) (phase)",
-          "trace_type": 517
-        },
-        {
-          "color": "rgb(55, 126, 184)",
-          "signal": "V(Net-_R1-Pad2_) (gain)",
-          "trace_type": 521
-        },
-        {
-          "color": "rgb(255, 127, 0)",
-          "signal": "V(Net-_U2A-+_) (phase)",
-          "trace_type": 517
-        },
-        {
-          "color": "rgb(255, 127, 0)",
-          "signal": "V(Net-_U2A-+_) (gain)",
-          "trace_type": 521
-        },
-        {
-          "color": "rgb(152, 78, 163)",
-          "signal": "V(Net-_U2A--_) (phase)",
-          "trace_type": 517
-        },
-        {
-          "color": "rgb(152, 78, 163)",
-          "signal": "V(Net-_U2A--_) (gain)",
+          "color": "rgb(255, 255, 51)",
+          "signal": "V(/lowpass_gained) (gain)",
           "trace_type": 521
         }
       ]
@@ -104,12 +55,12 @@
           "color": "rgb(77, 175, 74)",
           "cursor2": {
             "position": 0.037544802867383514,
-            "x_format": "3~s",
-            "y_format": "3~V"
+            "x_format": "3~Hz",
+            "y_format": "3~dB"
           },
           "cursorD": {
-            "x_format": "3~s",
-            "y_format": "3~V"
+            "x_format": "3~Hz",
+            "y_format": "3~dB"
           },
           "signal": "V(/lowpass_gained)",
           "trace_type": 257
@@ -122,8 +73,8 @@
             "y_format": "3~dB"
           },
           "cursorD": {
-            "x_format": "3~s",
-            "y_format": "3~V"
+            "x_format": "3~Hz",
+            "y_format": "3~dB"
           },
           "signal": "V(Net-_R1-Pad2_)",
           "trace_type": 257

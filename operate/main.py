@@ -2,8 +2,8 @@ from machine import Pin, SPI, UART
 import time
 import helpers
 
-sampling_rate = 3750  # Hz
-file_size = 3750 # num samples
+sampling_rate = 1000  # Hz
+file_size = 1000 # num samples
 project = 'nogps'
 
 time.sleep(0.5)
@@ -29,9 +29,9 @@ if gps_on.value() == 1:
     gps_initialized = helpers.initialize_gps(gps_uart)
 else:
     print("not using gps")
+    gps_initialized = False
 time.sleep(0.5)
 
-# configure SD pins
 # SD card configuration
 sd_cs = Pin(13, Pin.OUT)
 SD_SCLK_PIN = 10  # Serial Clock (SCLK)
@@ -40,11 +40,16 @@ SD_MOSI_PIN = 11  # Data In (MOSI)
 sd_spi = SPI(1, baudrate=4000000, polarity=0, phase=0, bits=8, firstbit=SPI.MSB,
              sck=Pin(SD_SCLK_PIN), mosi=Pin(SD_MOSI_PIN), miso=Pin(SD_MISO_PIN))
 sdcard, sd_initialized = helpers.initialize_sd(sd_spi, sd_cs)
-
 time.sleep(0.5)
 
-#configure other
+'''
+# XBee Configuration
+XBEE_TX_PIN = 4  # XBee TX -> Pico UART1 RX
+XBEE_RX_PIN = 5  # XBee RX -> Pico UART1 TX
+xbee_uart = UART(1, baudrate=9600, tx=Pin(XBEE_TX_PIN), rx=Pin(XBEE_RX_PIN))
+'''
 
+#configure other
 sample_mode = Pin(6, Pin.IN)
 mode = sample_mode.value()
 
@@ -58,15 +63,20 @@ if ads_initialized and sd_initialized:
             file_n += 1
             if mode==0: # read one component mag only
                 print(f"measuring 1 component {file_size} samples")
-                helpers.create_new_file(f"{project}_x_{file_n}.bin")
-                # get meta data, tool time, gps time, gps loc and put that in hte file
-                helpers.sample_data_1(file_size, pps, drdy, ads_spi, ads_cs, f"{project}_x_{file_n}.bin")
+                file_name = helpers.create_new_file(f"{project}_x_{file_n}.bin")
+                helpers.write_metadata(gps_initialized, file_name)                    
+                helpers.sample_data_1(file_size, pps, drdy, ads_spi, ads_cs, file_name)
+                #send_data = file_name + ',' + str(helpers.get_time())
+                #helpers.send_xbee_data(send_data, xbee_uart)
+                #helpers.sample_data( drdy, ads_spi, ads_cs, stop)
 
             if mode==1: # read 2 components
                 print(f"measuring 2 component {file_size} samples")
-                helpers.create_new_file(f"{project}_xy_{file_n}.bin")
-                # get meta data, tool time, gps time, gps loc and put that in hte file
-                helpers.sample_data_2(file_size, pps, drdy, ads_spi, ads_cs, f"{project}_xy_{file_n}.bin")
+                file_name = helpers.create_new_file(f"{project}_xy_{file_n}.bin")
+                helpers.write_metadata(gps_initialized, file_name)
+                #helpers.sample_data_2(file_size, pps, drdy, ads_spi, ads_cs, file_name)
+                #send_data = f"{file_name}, {helpers.get_time()}"
+                #helpers.send_xbee_data(send_data, xbee_uart)
             
         print("Program terminated by stop.")
 
