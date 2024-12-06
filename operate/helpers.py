@@ -229,7 +229,7 @@ def initialize_ads1256(spi, cs, drdy, sps):
         print("Error during ADS1256 initialization:", e)
         return False
 
-def sample_data( drdy, spi, cs, stop):  # For reading 1 component to serial
+def read_and_print_1(drdy, spi, cs, stop):  # For reading 1 component to serial
 
     send_command(spi, cs, RDATAC)
     # Start sampling
@@ -249,6 +249,47 @@ def sample_data( drdy, spi, cs, stop):  # For reading 1 component to serial
                 result -= 0x1000000
 
             print(result, sample_time)
+
+        except Exception as e:
+            print(f"Error sampling data: {e}")
+            continue
+    send_command(spi, cs, SDATAC)
+
+def read_and_print_2(drdy, spi, cs, stop):  # For reading 2 component to serial
+
+    send_command(spi, cs, RDATAC)
+    # Start sampling
+    while stop.value() ==0:
+        try:
+            send_command(spi, cs, RDATAC)
+            send_command(spi, cs, CONFIG_DIF1)  # Initialize to read diff 1
+            send_command(spi, cs, RDATAC)
+            # Wait for DRDY to signal data is ready
+            while drdy.value() == 1:
+                pass
+            # Read 3 bytes of data from the ADC
+            raw_data = spi.read(3)
+            # Combine the 3 bytes into a single 24-bit signed value
+            result_x = (raw_data[0] << 16) | (raw_data[1] << 8) | raw_data[2]
+            if result_x & 0x800000:  # Check for negative sign in 24-bit data
+                result_x -= 0x1000000
+            sample_time_x = get_time()
+            
+            send_command(spi, cs, RDATAC)
+            send_command(spi, cs, CONFIG_DIF1)  # Initialize to read from 4th pair of inputs
+            send_command(spi, cs, RDATAC)
+            # Wait for DRDY to signal data is ready
+            while drdy.value() == 1:
+                pass
+            # Read 3 bytes of data from the ADC
+            raw_data = spi.read(3)
+            # Combine the 3 bytes into a single 24-bit signed value
+            result_y = (raw_data[0] << 16) | (raw_data[1] << 8) | raw_data[2]
+            if result_y & 0x800000:  # Check for negative sign in 24-bit data
+                result_y -= 0x1000000
+            sample_time_y = get_time()
+
+            print(result_x, sample_time_x, result_y, sample_time_y)
 
         except Exception as e:
             print(f"Error sampling data: {e}")
