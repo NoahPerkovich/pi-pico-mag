@@ -3,16 +3,9 @@ Instrument prototyping to monitor electromagnetic  noise induced by power lines
 
 This is a data aquisistion system intended to record the magnetic field induced by overhead or burried electric transmission lines. Basically an indirect current monitor or ampmeter.
 
-2 goals:
-- measure the current in all wires of a powerline without accessing the wires themselves (continuously)
-- measure the noise created by powerlines (continuously)
+## Disclaimer
 
-
-
-motivation:
-
-
-## Requirements
+There are still several issues to work out. The write to SD card protocol causes unwanted delays at random times during data sampling. The communication protocol using Xbee is not complete but I intend to use the radio to communicate with other aquisition systems in am manner that they share with eachother the times they intend to record data and syncronize. Command sequence with the ADS could likely be improved to both increase speed and accuracy. The low pass filter designed is for practice and demonstration only. In later versions i intend to use pre-build filter chips for anti-aliasing.
 
 ## Usage
 
@@ -28,7 +21,7 @@ Debugging the sensor and analog digital conversion is easiest when using a live 
 To test the GPS the pico should have the following files uploaded:
 - operate/helpers.py
 - operate.sdcard.py
-- tests/print_GPS/main.py
+- tests/print_GPS/main.py 
 Monitor text through a serial monitor. Once the GPS has a valid signal it will print information. Verify accuracy
 
 To test the sd card operations follow similar procedure as testing the GPS but with the file:
@@ -65,3 +58,9 @@ There are 2 switches and 2 buttons in the design.
 - A button between hte two switches is for stopping data aquisition. This should be used before powering down the instrument to allow the sd card to be unmounted.
 - A button near the pico can be used to restart the entire initialization then data aquisition. When not connected to a pc for serial monitoring. you can interpret the lights on the board as indicators that the process is running correctly. If a light does not flicker on the sd card's board. This indicates that data is not being recorded. Restart with the button. When using gps, the blue LED should pulse every second. If gps is enabled and this is not occuring, restart with the button.
 
+Files are saved in binary format with some basic metadata saved in plain text at the beginning of each file. The binary format for one samplie is:
+- Pack data: [raw_data (3 bytes), combined_time (4 bytes)] for single component measurement
+- Pack data: [raw_data_x (3 bytes), combined_time_x (4 bytes), raw_data_y (3 bytes), combined_time_y (4 bytes)] 
+And the syncronization pulese is savd in the most significant bit in the combined_time or combine_time_x.
+
+Basic file read and plotting can be done with the notebook (read_sensor_files.ipynb). Because the 2 component measurment is still onot optimized and likely requires an additional ADS for high rate sampling, the notebook currently only reads 3SI formated files which are the sinlge component files. Small modification can be made to read the 2 component files, however this is a work in progress.
