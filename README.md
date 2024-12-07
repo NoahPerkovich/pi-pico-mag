@@ -28,6 +28,9 @@ To test the sd card operations follow similar procedure as testing the GPS but w
 - tests/sd_file_io/main.py
 The sd card must be formatted in FAT32. If it does not operate as expected check formatting on a pc then reinsert into device. 
 
+the driver file for the sdcard breakout board via spi was found on a forum and is accessible via this link
+https://github.com/micropython/micropython/files/13183364/sdcard.py.zip, and i was unable to recover the name of the author who created thisversion of the driver. Note this one works far better than the one on the official micropython-lib main branch
+
 ### Operate as a data aquisition tool
 The sampling rate can be set in the operate/main.py file. Select desired sampling rate from the list found in operate/helpers.py. Those are the only options the ADS recognizes. This is a target rate, due to the fileio speed in the sd card and limited memory on the pico, the desired sampling rate will likely not be achieved if over 1000Hz. The size of the files can also be set. this is the number of samplies recorded continously before closing the file. The file naming convention can also be modified in main.py
 The pico must have the following files uploaded:
