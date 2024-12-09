@@ -3,6 +3,8 @@ Instrument prototyping to monitor electromagnetic  noise induced by power lines
 
 This is a data aquisistion system intended to record the magnetic field induced by overhead or burried electric transmission lines. Basically an indirect current monitor or ampmeter.
 
+![Alt text](circuitry/mainboard/breadboard.png)
+
 ## Disclaimer
 
 There are still several issues to work out. The write to SD card protocol causes unwanted delays at random times during data sampling. The communication protocol using Xbee is not complete but I intend to use the radio to communicate with other aquisition systems in am manner that they share with eachother the times they intend to record data and syncronize. Command sequence with the ADS could likely be improved to both increase speed and accuracy. The low pass filter designed is for practice and demonstration only. In later versions i intend to use pre-build filter chips for anti-aliasing.
@@ -67,3 +69,4 @@ Files are saved in binary format with some basic metadata saved in plain text at
 And the syncronization pulese is savd in the most significant bit in the combined_time or combine_time_x.
 
 Basic file read and plotting can be done with the notebook (read_sensor_files.ipynb). Because the 2 component measurment is still onot optimized and likely requires an additional ADS for high rate sampling, the notebook currently only reads 3SI formated files which are the sinlge component files. Small modification can be made to read the 2 component files, however this is a work in progress.
+
